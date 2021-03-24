@@ -1,0 +1,8 @@
+{
+    "name": "azazello/do-space-client",
+    "description": "This package allows you to manage the DO server space",
+    "require": {
+        "php": ">=5.4.0",
+        "aws/aws-sdk-php": "^3.52"
+    }
+}
