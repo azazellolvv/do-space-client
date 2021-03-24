@@ -1,5 +1,7 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 use Aws\S3\S3Client;
 
 class SpacesConnect {
