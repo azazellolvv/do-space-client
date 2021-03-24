@@ -1,11 +1,11 @@
 {
-    "name": "azazello/do-space-client",
-    "description": "This package allows you to manage the DO server space",
-    "require": {
-        "php": ">=5.4.0"        
-    },
-    "license": "MIT",
-    "autoload": {
-        "files": ["spaces.php"]
-    }
+  "name": "azazello/do-space-client",
+  "description": "This package allows you to manage the DO server space",
+  "require": {
+    "php": ">=5.4.0",
+    "aws/aws-sdk-php": "^3.52",
+    "guzzlehttp/guzzle": "^7.0",
+    "mtdowling/jmespath.php": "^2.4",
+    "psr/http-message": "^1.0"
+  }
 }
