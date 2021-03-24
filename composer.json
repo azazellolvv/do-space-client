@@ -4,5 +4,9 @@
     "require": {
         "php": ">=5.4.0",
         "aws/aws-sdk-php": "^3.52"
+    },
+    "license": "MIT",
+    "autoload": {
+        "files": ["spaces.php"]
     }
 }
