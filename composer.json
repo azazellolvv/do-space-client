@@ -2,7 +2,7 @@
   "name": "azazello/do-space-client",
   "description": "This package allows you to manage the DO server space",
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=5.5",
     "aws/aws-sdk-php": "^3.52",
     "guzzlehttp/guzzle": "^7.0",
     "mtdowling/jmespath.php": "^2.4",

@@ -1,33 +1,24 @@
 <?php
 
+namespace Azazello\SpacesConnect;
+
+use Aws\S3\S3Client;
+
 class SpacesConnect
 {
-    /*
-    An API wrapper for AWS, makes working with DigitalOcean's Spaces super easy.
-    Written by Devang Srivastava for Dev Uncoded.
-    Available under MIT License ( https://opensource.org/licenses/MIT )
-    */
 
     function __construct($access_key, $secret_key, $spaceName = "", $region = "nyc3", $host = "digitaloceanspaces.com")
     {
 
-        //Only pulled if an AWS class doesn't already exist.
-        $non_composer_aws_lib = dirname(__FILE__) . "/aws/autoloader.php";
 
         if (!empty($spaceName)) {
             $endpoint = "https://" . $spaceName . "." . $region . "." . $host;
         } else {
             $endpoint = "https://" . $region . "." . $host;
         }
-        if (!class_exists('Aws\S3\S3Client')) {
-            if (file_exists($non_composer_aws_lib)) {
-                require_once($non_composer_aws_lib);
-            } else {
-                throw new SpacesAPIException(@json_encode(["error" => ["message" => "No AWS class loaded.", "code" => "no_aws_class", "type" => "init"]]));
-            }
-        }
+
         try {
-            $this->client = Aws\S3\S3Client::factory(array(
+            $this->client = S3Client::factory(array(
                 'region' => $region,
                 'version' => 'latest',
                 'endpoint' => $endpoint,
@@ -112,7 +103,7 @@ class SpacesConnect
             $this->space = "";
         }
         try {
-            $this->client = Aws\S3\S3Client::factory(array(
+            $this->client = S3Client::factory(array(
                 'region' => $region,
                 'version' => 'latest',
                 'endpoint' => $endpoint,
