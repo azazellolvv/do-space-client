@@ -9,8 +9,6 @@ class SpacesConnect
 
     function __construct($access_key, $secret_key, $spaceName = "", $region = "nyc3", $host = "digitaloceanspaces.com")
     {
-
-
         if (!empty($spaceName)) {
             $endpoint = "https://" . $spaceName . "." . $region . "." . $host;
         } else {
@@ -256,36 +254,36 @@ class SpacesConnect
     /*
       Upload a file.
     */
-    public function UploadFile($pathToFile, $access = "private", $save_as = "", $mime_type = "application/octet-stream") {
-        if(empty($save_as)) {
+    public function UploadFile($pathToFile, $access = "private", $save_as = "", $mime_type = "application/octet-stream")
+    {
+        if (empty($save_as)) {
             $save_as = $pathToFile;
         }
-        if($access == "public") {
+        if ($access == "public") {
             $access = "public-read";
         }
         $is_file = strlen($pathToFile) <= PHP_MAXPATHLEN && is_file($pathToFile);
-        if(!$is_file){
+        if (!$is_file) {
             $file = $pathToFile;
-        }else{
+        } else {
             $file = fopen($pathToFile, 'r+');
         }
         try {
             $result = $this->client->putObject(array(
-                'Bucket'      => $this->space,
-                'Key'         => $save_as,
-                'Body'        => $file,
-                'ACL'         => $access,
+                'Bucket' => $this->space,
+                'Key' => $save_as,
+                'Body' => $file,
+                'ACL' => $access,
                 'ContentType' => $mime_type
             ));
 
             $this->client->waitUntil('ObjectExists', array(
                 'Bucket' => $this->space,
-                'Key'    => $save_as
+                'Key' => $save_as
             ));
 
             return $this->ObjReturn($result->toArray());
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->HandleAWSException($e);
         } finally {
             if ($is_file && is_resource($file)) {
