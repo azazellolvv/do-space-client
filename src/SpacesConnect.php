@@ -1,6 +1,6 @@
 <?php
 
-namespace Azazello\SpacesConnect;
+namespace Azazello\DOSpacesConnect;
 
 use Aws\S3\S3Client;
 

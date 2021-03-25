@@ -10,6 +10,8 @@
   },
   "license": "MIT",
   "autoload": {
-    "files": ["SpacesAPIException.php"]
+    "psr-4": {
+      "Azazello\\DOSpacesConnect\\": "src"
+    }
   }
 }

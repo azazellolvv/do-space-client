@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Azazello\SpacesConnect;
+namespace Azazello\DOSpacesConnect;
 
 
 /*
